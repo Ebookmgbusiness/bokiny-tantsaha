@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Boky teknika ho an'ny tantsaha Malagasy - Fambolena, Fiompiana, Jono">
+<title>Bokin'ny Tantsaha ho Matihanina — Fahalalana ho an'ny tany</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Karla:wght@400;500;700&display=swap');
+  :root{
+    --terre:#3a2a1a; --terre-clair:#5c4429; --paille:#e8dcc0; --paille-clair:#f4ecd8;
+    --feuille:#4a7c3f; --feuille-fonce:#2f5226; --riz:#d4a017; --papier:#faf6ec;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Karla',sans-serif;background:var(--papier);color:var(--terre);line-height:1.6;overflow-x:hidden}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,246,236,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--terre)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1180px;margin:0 auto}
+  .logo{font-family:'Fraunces';font-weight:900;font-size:1.3rem;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;color:var(--feuille-fonce)}
+  .logo .seed{width:26px;height:26px;background:var(--feuille);border-radius:50% 0 50% 50%;transform:rotate(45deg);flex-shrink:0}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{text-decoration:none;color:var(--terre);font-weight:700;font-size:.92rem}
+  .nav-links a:hover{color:var(--feuille)}
+  .nav-cta{background:var(--terre);color:var(--paille-clair)!important;padding:9px 18px;border-radius:3px;transition:.2s}
+  .nav-cta:hover{background:var(--feuille-fonce);color:#fff!important}
+  @media(max-width:720px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* HERO */
+  .hero{position:relative;padding:64px 0 56px;background:linear-gradient(var(--papier),var(--papier)),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(58,42,26,.03) 60px,rgba(58,42,26,.03) 61px);background-blend-mode:multiply}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+  .eyebrow{display:inline-block;font-weight:700;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--feuille-fonce);border:1.5px solid var(--feuille-fonce);padding:5px 13px;border-radius:2px;margin-bottom:20px}
+  h1{font-family:'Fraunces';font-weight:900;font-size:clamp(2.4rem,5.5vw,4rem);line-height:1;letter-spacing:-.03em;margin-bottom:18px}
+  h1 .em{color:var(--feuille);font-style:italic;font-weight:600}
+  .lede{font-size:1.15rem;max-width:36ch;margin-bottom:26px;color:var(--terre-clair)}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{background:var(--riz);color:var(--terre);padding:15px 28px;border-radius:3px;text-decoration:none;font-weight:700;font-size:1.02rem;border:2px solid var(--terre);box-shadow:5px 5px 0 var(--terre);transition:.15s;display:inline-block}
+  .btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--terre)}
+  .btn-2{background:transparent;color:var(--feuille-fonce);border:2px solid var(--feuille-fonce);box-shadow:none;padding:15px 24px;border-radius:3px;text-decoration:none;font-weight:700}
+  .btn-2:hover{background:var(--feuille-fonce);color:#fff}
+
+  .stats{display:flex;gap:30px;margin-top:34px;flex-wrap:wrap}
+  .stat b{font-family:'Fraunces';font-weight:900;font-size:1.9rem;color:var(--feuille-fonce);display:block;line-height:1}
+  .stat span{font-size:.82rem;color:var(--terre-clair);font-weight:700}
+
+  /* book visual */
+  .book{position:relative;perspective:1400px}
+  .cover{position:relative;aspect-ratio:3/4;border-radius:4px 8px 8px 4px;background:linear-gradient(135deg,var(--feuille-fonce),var(--feuille));box-shadow:-14px 20px 40px rgba(58,42,26,.35),inset 3px 0 0 rgba(255,255,255,.12),inset -6px 0 14px rgba(0,0,0,.25);transform:rotateY(-14deg) rotateX(3deg);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paille-clair);overflow:hidden}
+  .cover:before{content:"";position:absolute;left:0;top:0;bottom:0;width:16px;background:rgba(0,0,0,.22)}
+  .cover-top{font-family:'Karla';font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+  .cover-title{font-family:'Fraunces';font-weight:900;font-size:2rem;line-height:1.02}
+  .cover-icons{font-size:1.8rem}
+  .cover-bottom{font-size:.8rem;opacity:.85;border-top:1px solid rgba(255,255,255,.3);padding-top:10px}
+  .badge{position:absolute;top:-14px;right:-14px;background:var(--riz);color:var(--terre);width:80px;height:80px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;line-height:1;transform:rotate(9deg);box-shadow:3px 3px 0 var(--terre);z-index:2}
+  .badge b{font-family:'Fraunces';font-size:1.15rem}
+  .badge span{font-size:.58rem}
+
+  /* STRIP */
+  .strip{background:var(--terre);color:var(--paille-clair);padding:14px 0;overflow:hidden}
+  .strip-in{display:flex;gap:44px;white-space:nowrap;animation:scroll 22s linear infinite;font-family:'Fraunces';font-weight:600;font-size:1.05rem}
+  .strip-in span{display:flex;align-items:center;gap:44px}
+  .dot{color:var(--riz)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  section.pad{padding:64px 0}
+  .sec-head{font-family:'Fraunces';font-weight:900;font-size:clamp(1.7rem,4vw,2.6rem);letter-spacing:-.02em;margin-bottom:12px;line-height:1.05}
+  .sec-sub{color:var(--terre-clair);max-width:52ch;margin-bottom:40px;font-size:1.05rem}
+  .center{text-align:center}
+  .center .sec-sub{margin-left:auto;margin-right:auto}
+
+  /* FREE BOOK */
+  .free{background:linear-gradient(135deg,var(--feuille-fonce),var(--feuille));border-radius:8px;padding:44px;color:var(--paille-clair);display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+  .free:before{content:"🎁";position:absolute;font-size:12rem;opacity:.08;right:-20px;top:-30px}
+  .free-tag{display:inline-block;background:var(--riz);color:var(--terre);font-weight:700;font-size:.75rem;letter-spacing:.1em;padding:5px 12px;border-radius:2px;margin-bottom:14px;text-transform:uppercase}
+  .free h2{font-family:'Fraunces';font-weight:900;font-size:1.9rem;line-height:1.1;margin-bottom:12px}
+  .free p{opacity:.92;margin-bottom:20px}
+  .free .btn{background:var(--riz);border-color:var(--paille-clair);box-shadow:4px 4px 0 rgba(0,0,0,.3)}
+  .free-mini{font-size:.82rem;opacity:.8;margin-top:10px}
+  .free-book{text-align:center}
+  .free-book .mini-cover{background:var(--papier);color:var(--terre);border-radius:4px;padding:24px 18px;box-shadow:0 14px 30px rgba(0,0,0,.3);transform:rotate(-3deg);display:inline-block;max-width:220px}
+  .free-book .mini-cover .ft{font-size:.62rem;font-weight:700;letter-spacing:.15em;color:var(--feuille-fonce);text-transform:uppercase}
+  .free-book .mini-cover .fb{font-family:'Fraunces';font-weight:900;font-size:1.5rem;color:var(--terre);line-height:1.05;margin:8px 0}
+  .free-book .mini-cover .fi{font-size:1.6rem;margin:6px 0}
+
+  /* CATALOGUE */
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+  .card{border:2px solid var(--terre);border-radius:6px;background:var(--papier);overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-5px);box-shadow:8px 10px 0 var(--terre)}
+  .card-top{background:linear-gradient(135deg,var(--feuille-fonce),var(--feuille));padding:26px 22px;color:var(--paille-clair);position:relative;min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
+  .card-ic{font-size:2.4rem}
+  .card-top h3{font-family:'Fraunces';font-weight:900;font-size:1.35rem;line-height:1.1;margin-top:10px}
+  .card-body{padding:18px 22px;flex:1;display:flex;flex-direction:column}
+  .card-body p{color:var(--terre-clair);font-size:.94rem;margin-bottom:16px;flex:1}
+  .card-price{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+  .card-price .p{font-family:'Fraunces';font-weight:900;font-size:1.4rem;color:var(--feuille-fonce)}
+  .card-price .buy{background:var(--riz);color:var(--terre);padding:9px 18px;border-radius:3px;text-decoration:none;font-weight:700;border:2px solid var(--terre);font-size:.9rem}
+  .card-price .buy:hover{background:var(--terre);color:var(--paille-clair)}
+  .card.soon{opacity:.85}
+  .card.soon .card-top{background:linear-gradient(135deg,#6b6152,#8a7a60)}
+  .soon-tag{position:absolute;top:14px;right:16px;background:var(--paille-clair);color:var(--terre);font-size:.66rem;font-weight:700;padding:4px 10px;border-radius:2px;text-transform:uppercase}
+  .card.soon .buy{background:var(--paille);pointer-events:none;opacity:.7}
+
+  /* CONTACT / BUY */
+  .buy-sec{background:var(--terre);color:var(--paille-clair);border-radius:8px;padding:48px;text-align:center;position:relative;overflow:hidden}
+  .buy-sec:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 22px,rgba(212,160,23,.05) 22px,rgba(212,160,23,.05) 24px)}
+  .buy-sec>*{position:relative}
+  .buy-sec h2{font-family:'Fraunces';font-weight:900;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px}
+  .buy-sec p{max-width:46ch;margin:0 auto 24px;opacity:.9}
+  .pay{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;font-size:.85rem;font-weight:700}
+  .pay span{border:1px solid rgba(255,255,255,.3);padding:6px 14px;border-radius:3px}
+  .contact-big{font-family:'Fraunces';font-weight:900;font-size:1.8rem;color:var(--riz);margin:14px 0}
+
+  /* FAQ */
+  .faq details{border-bottom:2px solid var(--terre);padding:18px 0}
+  .faq summary{font-family:'Fraunces';font-weight:600;font-size:1.15rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:after{content:"+";font-size:1.6rem;color:var(--feuille)}
+  .faq details[open] summary:after{content:"–"}
+  .faq p{padding-top:12px;color:var(--terre-clair);max-width:60ch}
+
+  footer{background:var(--terre);color:var(--paille-clair);padding:44px 0 28px;text-align:center}
+  footer .logo{justify-content:center;margin-bottom:12px;color:var(--paille-clair)}
+  footer .fsocial{margin:16px 0;display:flex;gap:16px;justify-content:center}
+  footer .fsocial a{color:var(--paille-clair);text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:3px;font-size:.9rem}
+  footer .fsocial a:hover{background:var(--feuille);border-color:var(--feuille)}
+  footer p{opacity:.7;font-size:.88rem;margin-top:8px}
+
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .book{max-width:280px;margin:0 auto}
+    .free{grid-template-columns:1fr;padding:32px;gap:28px}
+    .free-book{order:-1}
+    .buy-sec{padding:36px 22px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="logo"><span class="seed"></span>Bokin'ny Tantsaha ho Matihanina</div>
+    <div class="nav-links">
+      <a href="#maimaim-poana">Boky maimaim-poana</a>
+      <a href="#katalaogy">Katalaogy</a>
+      <a href="#hividy" class="nav-cta">Hividy</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Boky teknika · PDF · Teny Malagasy</span>
+      <h1>Ny tany dia <span class="em">mamaly</span> an'izay mahay miompana aminy.</h1>
+      <p class="lede">Boky misy fahalalana marina momba ny fambolena, fiompiana ary jono — ho an'ny tantsaha te ho matihanina. Vakio anio, ampiharo rahampitso.</p>
+      <div class="hero-cta">
+        <a href="#maimaim-poana" class="btn">🎁 Boky maimaim-poana</a>
+        <a href="#katalaogy" class="btn-2">Jereo ny katalaogy</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>3</b><span>SEHATRA LEHIBE</span></div>
+        <div class="stat"><b>PDF</b><span>AZO ALAINA AVY HATRANY</span></div>
+        <div class="stat"><b>100%</b><span>TENY MALAGASY</span></div>
+      </div>
+    </div>
+    <div class="book">
+      <div class="badge"><b>-50%</b><span>vidiny</span></div>
+      <div class="cover">
+        <div class="cover-top">Bokin'ny Tantsaha ho Matihanina</div>
+        <div>
+          <div class="cover-title">Fiompiana Akoho Gasy</div>
+        </div>
+        <div class="cover-icons">🐔</div>
+        <div class="cover-bottom">90 andro ho amin'ny tombony · Ravinala</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="strip-in">
+    <span>Fambolena <b class="dot">·</b> Fiompiana <b class="dot">·</b> Jono <b class="dot">·</b> Fatra sakafo GMQ <b class="dot">·</b> Kajy tombony marina <b class="dot">·</b> Azo ampiharina avy hatrany <b class="dot">·</b></span>
+    <span>Fambolena <b class="dot">·</b> Fiompiana <b class="dot">·</b> Jono <b class="dot">·</b> Fatra sakafo GMQ <b class="dot">·</b> Kajy tombony marina <b class="dot">·</b> Azo ampiharina avy hatrany <b class="dot">·</b></span>
+  </div>
+</div>
+
+<!-- FREE BOOK -->
+<section class="pad wrap" id="maimaim-poana">
+  <div class="free">
+    <div class="free-book">
+      <div class="mini-cover">
+        <div class="ft">Boky maimaim-poana</div>
+        <div class="fb">Fomba 5 hampitomboana ny vokatra</div>
+        <div class="fi">🌾 🐔 🎣</div>
+        <div class="ft">Ravinala</div>
+      </div>
+    </div>
+    <div>
+      <span class="free-tag">🎁 Maimaim-poana</span>
+      <h2>Fomba 5 hampitomboana ny vokatra</h2>
+      <p>Boky PDF fohy mitanisa ny fomba 5 fototra ampiharin'ny tantsaha matihanina mba hampitombo ny vokatra sy ny fidiram-bola — na fambolena, na fiompiana, na jono. Tsy misy sarany, azo alaina avy hatrany.</p>
+      <a href="./Fomba-5-hampitomboana-vokatra.pdf" class="btn" download>⬇️ Alaivo maimaim-poana</a>
+      <div class="free-mini">PDF · Teny Malagasy · Azo alaina avy hatrany</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGUE -->
+<section class="pad wrap" id="katalaogy">
+  <div class="center">
+    <h2 class="sec-head">Ny katalaogy boky</h2>
+    <p class="sec-sub">Boky teknika ho an'ny sehatra samihafa. Miampy tsikelikely.</p>
+  </div>
+  <div class="cat-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <span class="card-ic">🐔</span>
+        <h3>Fiompiana Akoho Gasy</h3>
+      </div>
+      <div class="card-body">
+        <p>90 andro ho amin'ny tombony. Misy fatra sakafo isan-kerinandro (GMQ), kisarisary tranon'akoho, kajy tombony marina, vaksiny, sy fanoloana akora lafo.</p>
+        <div class="card-price">
+          <span class="p">5 000 Ar</span>
+          <a href="#hividy" class="buy">Hividy</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card soon">
+      <div class="card-top">
+        <span class="soon-tag">Ho avy</span>
+        <span class="card-ic">🌾</span>
+        <h3>Ny Vary Vokatra Betsaka</h3>
+      </div>
+      <div class="card-body">
+        <p>Fomba SRI sy tetika maoderina hampitomboana ny voka-bary tsy misy fampitomboana vidiny be.</p>
+        <div class="card-price">
+          <span class="p">Ho avy</span>
+          <a href="#" class="buy">Andraso</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card soon">
+      <div class="card-top">
+        <span class="soon-tag">Ho avy</span>
+        <span class="card-ic">🐖</span>
+        <h3>Fiompiana Kisoa Mahavokatra</h3>
+      </div>
+      <div class="card-body">
+        <p>Karazana, sakafo mora vidy, fahasalamana, ary fitantanana toeram-piompiana ho fidiram-bola maharitra.</p>
+        <div class="card-price">
+          <span class="p">Ho avy</span>
+          <a href="#" class="buy">Andraso</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card soon">
+      <div class="card-top">
+        <span class="soon-tag">Ho avy</span>
+        <span class="card-ic">🎣</span>
+        <h3>Fiompiana Trondro (Tilapia)</h3>
+      </div>
+      <div class="card-body">
+        <p>Fanamboarana kamva, karazana trondro, sakafo, ary fanangonana — ho an'izay manana tany kely misy rano.</p>
+        <div class="card-price">
+          <span class="p">Ho avy</span>
+          <a href="#" class="buy">Andraso</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card soon">
+      <div class="card-top">
+        <span class="soon-tag">Ho avy</span>
+        <span class="card-ic">🥬</span>
+        <h3>Fambolena Legioma Manana Tsena</h3>
+      </div>
+      <div class="card-body">
+        <p>Inona no ambolena arakaraka ny vanim-potoana sy ny fangatahan'ny tsena mba tsy hisy fatiantoka.</p>
+        <div class="card-price">
+          <span class="p">Ho avy</span>
+          <a href="#" class="buy">Andraso</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card soon">
+      <div class="card-top">
+        <span class="soon-tag">Ho avy</span>
+        <span class="card-ic">🐄</span>
+        <h3>Fiompiana Omby Ronono</h3>
+      </div>
+      <div class="card-body">
+        <p>Karazana, sakafo mampitombo ronono, fahasalamana, ary kajin'ny tombony amin'ny fivarotana ronono.</p>
+        <div class="card-price">
+          <span class="p">Ho avy</span>
+          <a href="#" class="buy">Andraso</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BUY / CONTACT -->
+<section class="pad wrap" id="hividy">
+  <div class="buy-sec">
+    <h2>Hividy ianao?</h2>
+    <p>Manorata aminay na antsoy izahay, dia halefanay anao ny boky PDF avy hatrany aorian'ny fandoavana.</p>
+    <div class="contact-big">📲 038 30 466 33</div>
+    <p style="margin-bottom:8px">Manorata amin'ny Facebook, SMS, na WhatsApp amin'io numéro io.</p>
+    <div class="pay">
+      <span>MVola</span><span>Orange Money</span><span>Airtel Money</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="pad wrap faq">
+  <h2 class="sec-head" style="margin-bottom:30px">Fanontaniana matetika</h2>
+  <details open>
+    <summary>Ahoana no hakàko ny boky?</summary>
+    <p>Manorata aminay (Facebook, SMS, WhatsApp: 038 30 466 33). Aorian'ny fandoavam-bola dia halefanay anao ny rohy hakàna ny PDF, azo alaina amin'ny finday na ordinateur.</p>
+  </details>
+  <details>
+    <summary>Amin'ny teny inona no nanoratana ny boky?</summary>
+    <p>Amin'ny teny Malagasy manontolo, mora azo, ho an'ny tantsaha rehetra na aiza na aiza faritra.</p>
+  </details>
+  <details>
+    <summary>Azoko vakiana amin'ny finday ve?</summary>
+    <p>Eny. PDF izy ka azo sokafana amin'ny finday, tablette, na ordinateur, tsy mila internet aorian'ny fakàna azy.</p>
+  </details>
+  <details>
+    <summary>Afaka mandoa amin'ny MVola ve aho?</summary>
+    <p>Eny, azonao atao ny mandoa amin'ny MVola, Orange Money na Airtel Money.</p>
+  </details>
+  <details>
+    <summary>Marina ve ilay boky maimaim-poana?</summary>
+    <p>Eny, tena maimaim-poana tanteraka ny boky "Fomba 5 hampitomboana ny vokatra". Azonao alaina avy hatrany tsy misy sarany.</p>
+  </details>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><span class="seed"></span>Bokin'ny Tantsaha ho Matihanina</div>
+    <div class="fsocial">
+      <a href="https://facebook.com/" target="_blank">Facebook</a>
+      <a href="https://wa.me/261383046633" target="_blank">WhatsApp</a>
+    </div>
+    <p>Boky teknika ho an'ny tantsaha Malagasy · Nosoratan'i Ravinala</p>
+    <p>© 2026 — Antananarivo, Madagascar · Rehetra voatokana</p>
+  </div>
+</footer>
+
+</body>
+</html>
